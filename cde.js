@@ -36,7 +36,7 @@ let SpinalURL = class SpinalURL extends Model {
     super();
 
     this.add_attr({
-      nameURL: name,
+      label: name,
       date: Date.now(),
       URL: url
     });
@@ -46,12 +46,12 @@ exports.SpinalURL = SpinalURL;
 spinalCore.register_models(SpinalURL);
 
 var SpinalAttribute = class SpinalAttribute extends Model {
-  constructor(name = "attributes") {
+  constructor(label, value) {
     super();
 
     this.add_attr({
-      name: "",
-      value: "",
+      label: label,
+      value: value,
       date: Date.now()
     });
   }
