@@ -18,14 +18,13 @@ let SpinalFile = class SpinalFile extends globalType.Model {
 exports.SpinalFile = SpinalFile;
 spinalCore.register_models(SpinalFile);
 let SpinalNote = class SpinalNote extends Model {
-  constructor(name = "message") {
+  constructor(username, message) {
     super();
 
     this.add_attr({
-      username: "",
-      owner: "",
+      username: username,
       date: Date.now(),
-      message: ""
+      message: message
     });
   }
 };
