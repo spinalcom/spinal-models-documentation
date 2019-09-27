@@ -1,8 +1,5 @@
 const spinalCore = require("spinal-core-connectorjs");
 const globalType = typeof window === "undefined" ? global : window;
-let exports = (module.exports = {});
-
-
 
 let SpinalFile = class SpinalFile extends globalType.Model {
   constructor(_id, _name) {
@@ -15,8 +12,9 @@ let SpinalFile = class SpinalFile extends globalType.Model {
     }
   }
 }
-exports.SpinalFile = SpinalFile;
+module.exports.SpinalFile = SpinalFile;
 spinalCore.register_models(SpinalFile);
+
 let SpinalNote = class SpinalNote extends Model {
   constructor(username, message) {
     super();
@@ -28,8 +26,9 @@ let SpinalNote = class SpinalNote extends Model {
     });
   }
 };
-exports.SpinalNote = SpinalNote;
+module.exports.SpinalNote = SpinalNote;
 spinalCore.register_models(SpinalNote);
+
 let SpinalURL = class SpinalURL extends Model {
   constructor(name, url) {
     super();
@@ -41,7 +40,7 @@ let SpinalURL = class SpinalURL extends Model {
     });
   }
 };
-exports.SpinalURL = SpinalURL;
+module.exports.SpinalURL = SpinalURL;
 spinalCore.register_models(SpinalURL);
 
 var SpinalAttribute = class SpinalAttribute extends Model {
@@ -56,8 +55,5 @@ var SpinalAttribute = class SpinalAttribute extends Model {
   }
 };
 
-
-
-
-exports.SpinalAttribute = SpinalAttribute;
+module.exports.SpinalAttribute = SpinalAttribute;
 spinalCore.register_models(SpinalAttribute);
