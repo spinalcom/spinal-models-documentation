@@ -16,13 +16,14 @@ module.exports.SpinalFile = SpinalFile;
 spinalCore.register_models(SpinalFile);
 
 let SpinalNote = class SpinalNote extends Model {
-  constructor(username, message) {
+  constructor(username, message, userId) {
     super();
 
     this.add_attr({
       username: username,
       date: Date.now(),
-      message: message
+      message: message,
+      userId : userId
     });
   }
 };
