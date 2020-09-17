@@ -1,0 +1,1 @@
+{"version":3,"file":"SpinalFile.js","sourceRoot":"","sources":["../src/SpinalFile.ts"],"names":[],"mappings":";AAAA;;;;;;;;;;;;;;;;;;;;;;GAsBG;;AAEH,+EAAiE;AAEjE,MAAa,UAAW,SAAQ,oCAAK;IACjC,YAAY,EAAU,EAAE,IAAY;QAChC,KAAK,EAAE,CAAC;QACR,IAAI,CAAC,QAAQ,CAAC;YACV,EAAE,EAAE,EAAE;YACN,IAAI,EAAE,IAAI;SACb,CAAC,CAAA;IACN,CAAC;CACJ;AARD,gCAQC;AAED,yCAAU,CAAC,eAAe,CAAC,UAAU,CAAC,CAAC"}
