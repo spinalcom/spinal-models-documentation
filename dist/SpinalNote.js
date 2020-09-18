@@ -35,7 +35,7 @@ class SpinalNote extends spinal_core_connectorjs_type_1.Model {
             userId: userId,
             type: type,
             file: file ? new spinal_core_connectorjs_type_1.Ptr(file) : undefined,
-            viewPoint: viewPoint
+            viewPoint: viewPoint ? viewPoint : undefined
         });
     }
 }

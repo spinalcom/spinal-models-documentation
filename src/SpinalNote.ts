@@ -43,7 +43,7 @@ export class SpinalNote extends Model {
             userId: userId,
             type: type,
             file: file ? new Ptr(file) : undefined,
-            viewPoint: viewPoint
+            viewPoint: viewPoint ? viewPoint : undefined
         })
     }
 }
