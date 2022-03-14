@@ -23,13 +23,14 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SpinalFile = void 0;
 const spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
 class SpinalFile extends spinal_core_connectorjs_type_1.Model {
     constructor(id, name) {
         super();
         this.add_attr({
             id: id,
-            name: name
+            name: name,
         });
     }
 }

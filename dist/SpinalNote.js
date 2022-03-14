@@ -23,6 +23,7 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SpinalNote = void 0;
 const spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
 const constants_1 = require("./constants");
 class SpinalNote extends spinal_core_connectorjs_type_1.Model {
@@ -35,7 +36,7 @@ class SpinalNote extends spinal_core_connectorjs_type_1.Model {
             userId: userId,
             type: type,
             file: file ? new spinal_core_connectorjs_type_1.Ptr(file) : undefined,
-            viewPoint: viewPoint ? viewPoint : undefined
+            viewPoint: viewPoint ? viewPoint : undefined,
         });
     }
 }

@@ -23,6 +23,7 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SpinalURL = void 0;
 const spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
 class SpinalURL extends spinal_core_connectorjs_type_1.Model {
     constructor(name, url) {
@@ -30,7 +31,7 @@ class SpinalURL extends spinal_core_connectorjs_type_1.Model {
         this.add_attr({
             date: Date.now(),
             URL: url,
-            name: name
+            name: name,
         });
     }
 }

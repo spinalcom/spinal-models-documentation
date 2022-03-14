@@ -22,16 +22,19 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-import { spinalCore, Model } from "spinal-core-connectorjs_type";
+import { spinalCore, Model } from 'spinal-core-connectorjs_type';
 
 export class SpinalFile extends Model {
-    constructor(id: string, name: string) {
-        super();
-        this.add_attr({
-            id: id,
-            name: name
-        })
-    }
+  public id: spinal.Str;
+  public name: spinal.Str;
+
+  constructor(id: string, name: string) {
+    super();
+    this.add_attr({
+      id: id,
+      name: name,
+    });
+  }
 }
 
 spinalCore.register_models(SpinalFile);

@@ -22,17 +22,21 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-import { spinalCore, Model } from "spinal-core-connectorjs_type";
+import { spinalCore, Model } from 'spinal-core-connectorjs_type';
 
 export class SpinalURL extends Model {
-    constructor(name: string, url: string) {
-        super();
-        this.add_attr({
-            date: Date.now(),
-            URL: url,
-            name: name
-        })
-    }
+  date: spinal.Val;
+  URL: spinal.Str;
+  name: spinal.Str;
+
+  constructor(name: string, url: string) {
+    super();
+    this.add_attr({
+      date: Date.now(),
+      URL: url,
+      name: name,
+    });
+  }
 }
 
 spinalCore.register_models(SpinalURL);

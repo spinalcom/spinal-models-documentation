@@ -22,19 +22,25 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-import { spinalCore, Model } from "spinal-core-connectorjs_type";
+import { spinalCore, Model } from 'spinal-core-connectorjs_type';
 
 export class SpinalAttribute extends Model {
-    constructor(label: string, value: any, type: string = "", unit: string = "") {
-        super();
-        this.add_attr({
-            label: label,
-            value: value,
-            date: Date.now(),
-            type: type,
-            unit: unit
-        })
-    }
+  public label: spinal.Str;
+  public value: spinal.Str | spinal.Val | spinal.Bool;
+  public date: spinal.Val;
+  public type: spinal.Str;
+  public unit: spinal.Str;
+
+  constructor(label: string, value: any, type: string = '', unit: string = '') {
+    super();
+    this.add_attr({
+      label: label,
+      value: value,
+      date: Date.now(),
+      type: type,
+      unit: unit,
+    });
+  }
 }
 
 spinalCore.register_models(SpinalAttribute);

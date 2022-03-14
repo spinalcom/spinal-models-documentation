@@ -23,16 +23,17 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SpinalAttribute = void 0;
 const spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
 class SpinalAttribute extends spinal_core_connectorjs_type_1.Model {
-    constructor(label, value, type = "", unit = "") {
+    constructor(label, value, type = '', unit = '') {
         super();
         this.add_attr({
             label: label,
             value: value,
             date: Date.now(),
             type: type,
-            unit: unit
+            unit: unit,
         });
     }
 }

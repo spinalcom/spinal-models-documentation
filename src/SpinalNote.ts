@@ -22,30 +22,49 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-import { spinalCore, Model, Ptr } from "spinal-core-connectorjs_type";
-import { MESSAGE_TYPES } from "./constants";
-
+import { spinalCore, Model, Ptr } from 'spinal-core-connectorjs_type';
+import { MESSAGE_TYPES } from './constants';
 
 export interface ViewStateInterface {
-    viewState: string,
-    objectState: string,
-    [key: string]: any
+  viewState: string;
+  objectState: string;
+  [key: string]: any;
 }
 
+export interface ViewStateInterfaceModel extends spinal.Model {
+  viewState: spinal.Str;
+  objectState: spinal.Str;
+  [key: string]: any;
+}
 
 export class SpinalNote extends Model {
-    constructor(username: string, message: string, userId: string, type: string = MESSAGE_TYPES.text, file?: any, viewPoint?: ViewStateInterface) {
-        super();
-        this.add_attr({
-            username: username,
-            date: Date.now(),
-            message: message,
-            userId: userId,
-            type: type,
-            file: file ? new Ptr(file) : undefined,
-            viewPoint: viewPoint ? viewPoint : undefined
-        })
-    }
+  username: spinal.Str;
+  date: spinal.Str;
+  message: spinal.Str;
+  userId: spinal.Str;
+  type: spinal.Str;
+  file: spinal.Ptr<spinal.File<spinal.Path>>;
+  viewPoint: ViewStateInterfaceModel;
+
+  constructor(
+    username: string,
+    message: string,
+    userId: string,
+    type: string = MESSAGE_TYPES.text,
+    file?: any,
+    viewPoint?: ViewStateInterface
+  ) {
+    super();
+    this.add_attr({
+      username: username,
+      date: Date.now(),
+      message: message,
+      userId: userId,
+      type: type,
+      file: file ? new Ptr(file) : undefined,
+      viewPoint: viewPoint ? viewPoint : undefined,
+    });
+  }
 }
 
 spinalCore.register_models(SpinalNote);

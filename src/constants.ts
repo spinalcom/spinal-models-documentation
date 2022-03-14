@@ -22,4 +22,4 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-export const MESSAGE_TYPES = { text: "text", image: "img", file: "file" }
+export const MESSAGE_TYPES = { text: 'text', image: 'img', file: 'file' };

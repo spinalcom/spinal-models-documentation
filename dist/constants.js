@@ -23,5 +23,6 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MESSAGE_TYPES = { text: "text", image: "img", file: "file" };
+exports.MESSAGE_TYPES = void 0;
+exports.MESSAGE_TYPES = { text: 'text', image: 'img', file: 'file' };
 //# sourceMappingURL=constants.js.map
