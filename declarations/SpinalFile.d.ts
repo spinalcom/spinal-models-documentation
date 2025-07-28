@@ -1,6 +1,7 @@
-import { Model } from 'spinal-core-connectorjs_type';
+import { Model, type Str } from 'spinal-core-connectorjs';
 export declare class SpinalFile extends Model {
-    id: spinal.Str;
-    name: spinal.Str;
+    id: Str;
+    name: Str;
+    constructor();
     constructor(id: string, name: string);
 }

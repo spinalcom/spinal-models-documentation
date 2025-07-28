@@ -1,4 +1,4 @@
-import { Model } from 'spinal-core-connectorjs_type';
+import { Model } from 'spinal-core-connectorjs';
 export interface ViewStateInterface {
     viewState: string;
     objectState: string;
@@ -17,5 +17,6 @@ export declare class SpinalNote extends Model {
     type: spinal.Str;
     file: spinal.Ptr<spinal.File<spinal.Path>>;
     viewPoint: ViewStateInterfaceModel;
+    constructor();
     constructor(username: string, message: string, userId: string, type?: string, file?: any, viewPoint?: ViewStateInterface);
 }

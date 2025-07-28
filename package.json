@@ -1,6 +1,6 @@
 {
   "name": "spinal-models-documentation",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "types": "declarations",
   "main": "dist/index.js",
@@ -12,11 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "spinal-core-connectorjs": "git+https://github.com/spinalcom/spinal-core-connectorjs.git",
-    "spinal-core-connectorjs_type": "git+https://github.com/spinalcom/spinal-core-connectorjs_type.git"
+    "spinal-core-connectorjs": "git+https://github.com/spinalcom/spinal-core-connectorjs.git"
   },
   "devDependencies": {
-    "typescript": "^3.2.2",
-    "@types/node": "^10.12.12"
+    "@types/node": "^24.1.0",
+    "typescript": "^5.8.3"
   }
 }

@@ -24,22 +24,24 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpinalNote = void 0;
-const spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
+const spinal_core_connectorjs_1 = require("spinal-core-connectorjs");
 const constants_1 = require("./constants");
-class SpinalNote extends spinal_core_connectorjs_type_1.Model {
+class SpinalNote extends spinal_core_connectorjs_1.Model {
     constructor(username, message, userId, type = constants_1.MESSAGE_TYPES.text, file, viewPoint) {
         super();
+        if (spinal_core_connectorjs_1.FileSystem._sig_server === false)
+            return;
         this.add_attr({
             username: username,
             date: Date.now(),
             message: message,
             userId: userId,
             type: type,
-            file: file ? new spinal_core_connectorjs_type_1.Ptr(file) : undefined,
+            file: file ? new spinal_core_connectorjs_1.Ptr(file) : undefined,
             viewPoint: viewPoint ? viewPoint : undefined,
         });
     }
 }
 exports.SpinalNote = SpinalNote;
-spinal_core_connectorjs_type_1.spinalCore.register_models(SpinalNote);
+spinal_core_connectorjs_1.spinalCore.register_models(SpinalNote);
 //# sourceMappingURL=SpinalNote.js.map

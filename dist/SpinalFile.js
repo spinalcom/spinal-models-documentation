@@ -24,16 +24,18 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpinalFile = void 0;
-const spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
-class SpinalFile extends spinal_core_connectorjs_type_1.Model {
+const spinal_core_connectorjs_1 = require("spinal-core-connectorjs");
+class SpinalFile extends spinal_core_connectorjs_1.Model {
     constructor(id, name) {
         super();
-        this.add_attr({
-            id: id,
-            name: name,
-        });
+        if (spinal_core_connectorjs_1.FileSystem._sig_server === false)
+            return;
+        if (id === undefined)
+            this.add_attr('id', id);
+        if (name === undefined)
+            this.add_attr('name', name);
     }
 }
 exports.SpinalFile = SpinalFile;
-spinal_core_connectorjs_type_1.spinalCore.register_models(SpinalFile);
+spinal_core_connectorjs_1.spinalCore.register_models(SpinalFile);
 //# sourceMappingURL=SpinalFile.js.map

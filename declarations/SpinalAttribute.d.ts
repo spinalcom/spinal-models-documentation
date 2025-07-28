@@ -1,9 +1,10 @@
-import { Model } from 'spinal-core-connectorjs_type';
+import { Model, type Str, type Val } from 'spinal-core-connectorjs';
 export declare class SpinalAttribute extends Model {
-    label: spinal.Str;
-    value: spinal.Str | spinal.Val | spinal.Bool;
-    date: spinal.Val;
-    type: spinal.Str;
-    unit: spinal.Str;
-    constructor(label: string, value: any, type?: string, unit?: string);
+    label: Str;
+    value: Str;
+    lastModificationDate: Val;
+    type?: Str;
+    unit?: Str;
+    constructor();
+    constructor(label: string, value: string, type?: string, unit?: string);
 }

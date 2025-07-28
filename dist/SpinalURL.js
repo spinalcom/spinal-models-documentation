@@ -24,10 +24,12 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpinalURL = void 0;
-const spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
-class SpinalURL extends spinal_core_connectorjs_type_1.Model {
+const spinal_core_connectorjs_1 = require("spinal-core-connectorjs");
+class SpinalURL extends spinal_core_connectorjs_1.Model {
     constructor(name, url) {
         super();
+        if (spinal_core_connectorjs_1.FileSystem._sig_server === false)
+            return;
         this.add_attr({
             date: Date.now(),
             URL: url,
@@ -36,5 +38,5 @@ class SpinalURL extends spinal_core_connectorjs_type_1.Model {
     }
 }
 exports.SpinalURL = SpinalURL;
-spinal_core_connectorjs_type_1.spinalCore.register_models(SpinalURL);
+spinal_core_connectorjs_1.spinalCore.register_models(SpinalURL);
 //# sourceMappingURL=SpinalURL.js.map

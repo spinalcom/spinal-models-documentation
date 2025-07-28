@@ -22,7 +22,7 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-import { spinalCore, Model, Ptr } from 'spinal-core-connectorjs_type';
+import { FileSystem, spinalCore, Model, Ptr } from 'spinal-core-connectorjs';
 import { MESSAGE_TYPES } from './constants';
 
 export interface ViewStateInterface {
@@ -46,15 +46,26 @@ export class SpinalNote extends Model {
   file: spinal.Ptr<spinal.File<spinal.Path>>;
   viewPoint: ViewStateInterfaceModel;
 
+  constructor();
   constructor(
     username: string,
     message: string,
     userId: string,
+    type?: string,
+    file?: any,
+    viewPoint?: ViewStateInterface
+  );
+  constructor(
+    username?: string,
+    message?: string,
+    userId?: string,
     type: string = MESSAGE_TYPES.text,
     file?: any,
     viewPoint?: ViewStateInterface
   ) {
     super();
+    if (FileSystem._sig_server === false) return;
+
     this.add_attr({
       username: username,
       date: Date.now(),

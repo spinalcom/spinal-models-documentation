@@ -1,7 +1,8 @@
-import { Model } from 'spinal-core-connectorjs_type';
+import { Model, type Val, type Str } from 'spinal-core-connectorjs';
 export declare class SpinalURL extends Model {
-    date: spinal.Val;
-    URL: spinal.Str;
-    name: spinal.Str;
+    date: Val;
+    URL: Str;
+    name: Str;
+    constructor();
     constructor(name: string, url: string);
 }

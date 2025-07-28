@@ -24,19 +24,23 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpinalAttribute = void 0;
-const spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
-class SpinalAttribute extends spinal_core_connectorjs_type_1.Model {
-    constructor(label, value, type = '', unit = '') {
+const spinal_core_connectorjs_1 = require("spinal-core-connectorjs");
+class SpinalAttribute extends spinal_core_connectorjs_1.Model {
+    constructor(label, value, type, unit) {
         super();
-        this.add_attr({
-            label: label,
-            value: value,
-            date: Date.now(),
-            type: type,
-            unit: unit,
-        });
+        if (spinal_core_connectorjs_1.FileSystem._sig_server === false)
+            return;
+        if (label === undefined)
+            this.add_attr('label', label);
+        if (value === undefined)
+            this.add_attr('value', value);
+        if (type === undefined)
+            this.add_attr('type', type);
+        if (unit === undefined)
+            this.add_attr('unit', unit);
+        this.add_attr('lastModificationDate', Date.now());
     }
 }
 exports.SpinalAttribute = SpinalAttribute;
-spinal_core_connectorjs_type_1.spinalCore.register_models(SpinalAttribute);
+spinal_core_connectorjs_1.spinalCore.register_models(SpinalAttribute);
 //# sourceMappingURL=SpinalAttribute.js.map

@@ -22,24 +22,32 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-import { spinalCore, Model } from 'spinal-core-connectorjs_type';
+import {
+  FileSystem,
+  spinalCore,
+  Model,
+  type Str,
+  type Val,
+} from 'spinal-core-connectorjs';
 
 export class SpinalAttribute extends Model {
-  public label: spinal.Str;
-  public value: spinal.Str | spinal.Val | spinal.Bool;
-  public date: spinal.Val;
-  public type: spinal.Str;
-  public unit: spinal.Str;
+  public label: Str;
+  public value: Str;
+  public lastModificationDate: Val;
+  public type?: Str;
+  public unit?: Str;
 
-  constructor(label: string, value: any, type: string = '', unit: string = '') {
+  constructor();
+  constructor(label: string, value: string, type?: string, unit?: string);
+  constructor(label?: string, value?: string, type?: string, unit?: string) {
     super();
-    this.add_attr({
-      label: label,
-      value: value,
-      date: Date.now(),
-      type: type,
-      unit: unit,
-    });
+    if (FileSystem._sig_server === false) return;
+
+    if (label === undefined) this.add_attr('label', label);
+    if (value === undefined) this.add_attr('value', value);
+    if (type === undefined) this.add_attr('type', type);
+    if (unit === undefined) this.add_attr('unit', unit);
+    this.add_attr('lastModificationDate', Date.now());
   }
 }
 
