@@ -1,4 +1,4 @@
-import { Model, type Str, type Val } from 'spinal-core-connectorjs';
+import { Model, Str, type Val } from 'spinal-core-connectorjs';
 export declare class SpinalAttribute extends Model {
     label: Str;
     value: Str;

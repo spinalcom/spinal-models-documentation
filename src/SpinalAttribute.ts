@@ -26,7 +26,7 @@ import {
   FileSystem,
   spinalCore,
   Model,
-  type Str,
+  Str,
   type Val,
 } from 'spinal-core-connectorjs';
 
@@ -60,7 +60,11 @@ export class SpinalAttribute extends Model {
   }
 
   setValue(value: string) {
-    this.value.set(value);
+    if (this.value instanceof Str === false) {
+      this.mod_attr('value', value);
+    } else {
+      this.value.set(value);
+    }
     this.updateSpinalAttributeDate();
   }
   setLabel(label: string) {

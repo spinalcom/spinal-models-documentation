@@ -61,7 +61,12 @@ class SpinalAttribute extends spinal_core_connectorjs_1.Model {
         });
     }
     setValue(value) {
-        this.value.set(value);
+        if (this.value instanceof spinal_core_connectorjs_1.Str === false) {
+            this.mod_attr('value', value);
+        }
+        else {
+            this.value.set(value);
+        }
         this.updateSpinalAttributeDate();
     }
     setLabel(label) {
