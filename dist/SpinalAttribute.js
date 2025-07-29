@@ -22,15 +22,6 @@
  * with this file. If not, see
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpinalAttribute = void 0;
 const spinal_core_connectorjs_1 = require("spinal-core-connectorjs");
@@ -50,18 +41,25 @@ class SpinalAttribute extends spinal_core_connectorjs_1.Model {
         this.add_attr('lastModificationDate', Date.now());
     }
     updateSpinalAttributeDate() {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (typeof this.date !== 'undefined') {
-                this.rem_attr('date');
-                this.add_attr('lastModificationDate', Date.now());
-            }
-            else if (typeof this.lastModificationDate === 'undefined') {
-                this.add_attr('lastModificationDate', Date.now());
-            }
-            else {
-                this.lastModificationDate.set(Date.now());
-            }
-        });
+        if (typeof this.date !== 'undefined') {
+            this.rem_attr('date');
+            this.add_attr('lastModificationDate', Date.now());
+        }
+        else if (typeof this.lastModificationDate === 'undefined') {
+            this.add_attr('lastModificationDate', Date.now());
+        }
+        else {
+            this.lastModificationDate.set(Date.now());
+        }
+    }
+    upgradeDate() {
+        if (typeof this.date !== 'undefined') {
+            this.rem_attr('date');
+            this.add_attr('lastModificationDate', Date.now());
+        }
+        else if (typeof this.lastModificationDate === 'undefined') {
+            this.add_attr('lastModificationDate', Date.now());
+        }
     }
     setValue(value) {
         if (this.value instanceof spinal_core_connectorjs_1.Str === false) {

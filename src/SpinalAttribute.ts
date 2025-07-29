@@ -50,7 +50,7 @@ export class SpinalAttribute extends Model {
     this.add_attr('lastModificationDate', Date.now());
   }
 
-  public async updateSpinalAttributeDate() {
+  public updateSpinalAttributeDate() {
     if (typeof this.date !== 'undefined') {
       this.rem_attr('date');
       this.add_attr('lastModificationDate', Date.now());
@@ -60,8 +60,16 @@ export class SpinalAttribute extends Model {
       this.lastModificationDate.set(Date.now());
     }
   }
+  public upgradeDate() {
+    if (typeof this.date !== 'undefined') {
+      this.rem_attr('date');
+      this.add_attr('lastModificationDate', Date.now());
+    } else if (typeof this.lastModificationDate === 'undefined') {
+      this.add_attr('lastModificationDate', Date.now());
+    }
+  }
 
-  setValue(value: string) {
+  public setValue(value: string) {
     if (this.value instanceof Str === false) {
       this.mod_attr('value', value);
       this.updateSpinalAttributeDate();
@@ -69,12 +77,12 @@ export class SpinalAttribute extends Model {
       this.updateSpinalAttributeDate();
     }
   }
-  setLabel(label: string) {
+  public setLabel(label: string) {
     if (this.label.set(label)) {
       this.updateSpinalAttributeDate();
     }
   }
-  setType(type: string) {
+  public setType(type: string) {
     if (this.type === undefined) {
       this.add_attr('type', type);
       this.updateSpinalAttributeDate();
@@ -82,7 +90,7 @@ export class SpinalAttribute extends Model {
       this.updateSpinalAttributeDate();
     }
   }
-  setUnit(unit: string) {
+  public setUnit(unit: string) {
     if (this.unit === undefined) {
       this.add_attr('unit', unit);
       this.updateSpinalAttributeDate();
