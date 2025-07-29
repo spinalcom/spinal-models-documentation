@@ -55,6 +55,9 @@ class SpinalAttribute extends spinal_core_connectorjs_1.Model {
                 this.rem_attr('date');
                 this.add_attr('lastModificationDate', Date.now());
             }
+            else if (typeof this.lastModificationDate === 'undefined') {
+                this.add_attr('lastModificationDate', Date.now());
+            }
             else {
                 this.lastModificationDate.set(Date.now());
             }
@@ -63,33 +66,34 @@ class SpinalAttribute extends spinal_core_connectorjs_1.Model {
     setValue(value) {
         if (this.value instanceof spinal_core_connectorjs_1.Str === false) {
             this.mod_attr('value', value);
+            this.updateSpinalAttributeDate();
         }
-        else {
-            this.value.set(value);
+        else if (this.value.set(value)) {
+            this.updateSpinalAttributeDate();
         }
-        this.updateSpinalAttributeDate();
     }
     setLabel(label) {
-        this.label.set(label);
-        this.updateSpinalAttributeDate();
+        if (this.label.set(label)) {
+            this.updateSpinalAttributeDate();
+        }
     }
     setType(type) {
         if (this.type === undefined) {
             this.add_attr('type', type);
+            this.updateSpinalAttributeDate();
         }
-        else {
-            this.type.set(type);
+        else if (this.type.set(type)) {
+            this.updateSpinalAttributeDate();
         }
-        this.updateSpinalAttributeDate();
     }
     setUnit(unit) {
         if (this.unit === undefined) {
             this.add_attr('unit', unit);
+            this.updateSpinalAttributeDate();
         }
-        else {
-            this.unit.set(unit);
+        else if (this.unit.set(unit)) {
+            this.updateSpinalAttributeDate();
         }
-        this.updateSpinalAttributeDate();
     }
 }
 exports.SpinalAttribute = SpinalAttribute;
