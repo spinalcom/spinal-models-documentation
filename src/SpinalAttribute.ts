@@ -49,6 +49,40 @@ export class SpinalAttribute extends Model {
     if (unit === undefined) this.add_attr('unit', unit);
     this.add_attr('lastModificationDate', Date.now());
   }
+
+  public async updateSpinalAttributeDate() {
+    if (typeof this.date !== 'undefined') {
+      this.rem_attr('date');
+      this.add_attr('lastModificationDate', Date.now());
+    } else {
+      this.lastModificationDate.set(Date.now());
+    }
+  }
+
+  setValue(value: string) {
+    this.value.set(value);
+    this.updateSpinalAttributeDate();
+  }
+  setLabel(label: string) {
+    this.label.set(label);
+    this.updateSpinalAttributeDate();
+  }
+  setType(type: string) {
+    if (this.type === undefined) {
+      this.add_attr('type', type);
+    } else {
+      this.type.set(type);
+    }
+    this.updateSpinalAttributeDate();
+  }
+  setUnit(unit: string) {
+    if (this.unit === undefined) {
+      this.add_attr('unit', unit);
+    } else {
+      this.unit.set(unit);
+    }
+    this.updateSpinalAttributeDate();
+  }
 }
 
 spinalCore.register_models(SpinalAttribute);
