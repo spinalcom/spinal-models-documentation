@@ -51,14 +51,8 @@ export class SpinalAttribute extends Model {
   }
 
   public updateSpinalAttributeDate() {
-    if (typeof this.date !== 'undefined') {
-      this.rem_attr('date');
-      this.add_attr('lastModificationDate', Date.now());
-    } else if (typeof this.lastModificationDate === 'undefined') {
-      this.add_attr('lastModificationDate', Date.now());
-    } else {
-      this.lastModificationDate.set(Date.now());
-    }
+    this.upgradeDate();
+    this.lastModificationDate.set(Date.now());
   }
   public upgradeDate() {
     if (typeof this.date !== 'undefined') {
@@ -66,6 +60,16 @@ export class SpinalAttribute extends Model {
       this.add_attr('lastModificationDate', Date.now());
     } else if (typeof this.lastModificationDate === 'undefined') {
       this.add_attr('lastModificationDate', Date.now());
+    }
+
+    const type = this.type?.get();
+    const unit = this.unit?.get();
+
+    if (typeof type === 'undefined' && (type === '' || type === '-')) {
+      this.rem_attr('type');
+    }
+    if (typeof unit === 'undefined' && (unit === '' || unit === '-')) {
+      this.rem_attr('unit');
     }
   }
 
@@ -83,6 +87,7 @@ export class SpinalAttribute extends Model {
     }
   }
   public setType(type: string) {
+    if (typeof type === 'undefined' || type === '') return this.upgradeDate();
     if (this.type === undefined) {
       this.add_attr('type', type);
       this.updateSpinalAttributeDate();
@@ -91,6 +96,7 @@ export class SpinalAttribute extends Model {
     }
   }
   public setUnit(unit: string) {
+    if (typeof unit === 'undefined' || unit === '') return this.upgradeDate();
     if (this.unit === undefined) {
       this.add_attr('unit', unit);
       this.updateSpinalAttributeDate();

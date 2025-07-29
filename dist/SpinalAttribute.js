@@ -41,24 +41,25 @@ class SpinalAttribute extends spinal_core_connectorjs_1.Model {
         this.add_attr('lastModificationDate', Date.now());
     }
     updateSpinalAttributeDate() {
-        if (typeof this.date !== 'undefined') {
-            this.rem_attr('date');
-            this.add_attr('lastModificationDate', Date.now());
-        }
-        else if (typeof this.lastModificationDate === 'undefined') {
-            this.add_attr('lastModificationDate', Date.now());
-        }
-        else {
-            this.lastModificationDate.set(Date.now());
-        }
+        this.upgradeDate();
+        this.lastModificationDate.set(Date.now());
     }
     upgradeDate() {
+        var _a, _b;
         if (typeof this.date !== 'undefined') {
             this.rem_attr('date');
             this.add_attr('lastModificationDate', Date.now());
         }
         else if (typeof this.lastModificationDate === 'undefined') {
             this.add_attr('lastModificationDate', Date.now());
+        }
+        const type = (_a = this.type) === null || _a === void 0 ? void 0 : _a.get();
+        const unit = (_b = this.unit) === null || _b === void 0 ? void 0 : _b.get();
+        if (typeof type === 'undefined' && (type === '' || type === '-')) {
+            this.rem_attr('type');
+        }
+        if (typeof unit === 'undefined' && (unit === '' || unit === '-')) {
+            this.rem_attr('unit');
         }
     }
     setValue(value) {
@@ -76,6 +77,8 @@ class SpinalAttribute extends spinal_core_connectorjs_1.Model {
         }
     }
     setType(type) {
+        if (typeof type === 'undefined' || type === '')
+            return this.upgradeDate();
         if (this.type === undefined) {
             this.add_attr('type', type);
             this.updateSpinalAttributeDate();
@@ -85,6 +88,8 @@ class SpinalAttribute extends spinal_core_connectorjs_1.Model {
         }
     }
     setUnit(unit) {
+        if (typeof unit === 'undefined' || unit === '')
+            return this.upgradeDate();
         if (this.unit === undefined) {
             this.add_attr('unit', unit);
             this.updateSpinalAttributeDate();
