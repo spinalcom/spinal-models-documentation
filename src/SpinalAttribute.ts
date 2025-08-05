@@ -43,10 +43,10 @@ export class SpinalAttribute extends Model {
     super();
     if (FileSystem._sig_server === false) return;
 
-    if (label === undefined) this.add_attr('label', label);
-    if (value === undefined) this.add_attr('value', value);
-    if (type === undefined) this.add_attr('type', type);
-    if (unit === undefined) this.add_attr('unit', unit);
+    if (label !== undefined) this.add_attr('label', label);
+    if (value !== undefined) this.add_attr('value', value);
+    if (type !== undefined) this.add_attr('type', type);
+    if (unit !== undefined) this.add_attr('unit', unit);
     this.add_attr('lastModificationDate', Date.now());
   }
 

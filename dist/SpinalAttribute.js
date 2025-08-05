@@ -30,13 +30,13 @@ class SpinalAttribute extends spinal_core_connectorjs_1.Model {
         super();
         if (spinal_core_connectorjs_1.FileSystem._sig_server === false)
             return;
-        if (label === undefined)
+        if (label !== undefined)
             this.add_attr('label', label);
-        if (value === undefined)
+        if (value !== undefined)
             this.add_attr('value', value);
-        if (type === undefined)
+        if (type !== undefined)
             this.add_attr('type', type);
-        if (unit === undefined)
+        if (unit !== undefined)
             this.add_attr('unit', unit);
         this.add_attr('lastModificationDate', Date.now());
     }
